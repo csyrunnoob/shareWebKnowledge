@@ -16,10 +16,11 @@
 ![Alt text](./WechatIMG5.jpeg)
 - 3.字符串填充
 *String 新增了两个实例方法——String.prototype.padStart 和 String.prototype.padEnd——允许将空字符串或其他字符串追加或前置到原始字符串的尾部或开头。*
-
-    'someString'.padStart(numberOfCharcters [,stringForPadding]); 
-	'5'.padStart(10) // '          5'
-	'5'.padStart(10, '=*') //'=*=*=*=*=5'
-	'5'.padEnd(10) // '5         '
-	'5'.padEnd(10, '=*') //'5=*=*=*=*='
+  ```
+   'someString'.padStart(numberOfCharcters [,stringForPadding]); 
+   '5'.padStart(10) // '          5'
+   '5'.padStart(10, '=*') //'=*=*=*=*=5'
+   '5'.padEnd(10) // '5         '
+   '5'.padEnd(10, '=*') //'5=*=*=*=*='
+   ```
 
