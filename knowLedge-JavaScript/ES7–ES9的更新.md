@@ -2,7 +2,7 @@
 ### Es7
 - 1. Object.values()
  includes 是 Array 的一个方法，用于查找数组中是否包含了某个项（与 indexOf 不同的是，它可以包含 NaN）。
-![Alt text](./WechatIMG3.jpeg)
+![Alt text](https://github.com/csyrunnoob/shareWebKnowledge/blob/csy/img/WechatIMG3.jpeg)
 - 2 .指数中缀运算符
 *加法和减法等数学运算分别有 + 和 - 等中缀运算符。类似的，中缀运算符通常用于指数运算。ECMAScript 2016 引入了，用来替代 Math.pow。*
 ![Alt text](./WechatIMG4.jpeg)
