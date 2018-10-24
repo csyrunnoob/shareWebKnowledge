@@ -1,0 +1,51 @@
+一、Cookie
+JavaScript是运行在客户端的脚本，因此一般是不能够设置Session的，因为Session是运行在服务器端的。而cookie是运行在客户端的，所以可以用JS来设置cookie。
+
+cookie的结构：简单地说，cookie是以键值对的形式保存的，即key=value的格式。各个cookie之间一般是以“;”分隔。
+
+cookie是浏览器提供的一种机制，它将document 对象的cookie属性提供给JavaScript。可以由JavaScript对其进行控制，而并不是JavaScript本身的性质。cookie是存于用户硬盘的一个文件，这个文件通常对应于一个域名，当浏览器再次访问这个域名时，便使这个cookie可用。因此，cookie可以跨越一个域名下的多个网页，但不能跨越多个域名使用。 
+
+cookie机制将信息存储于用户硬盘，因此可以作为全局变量，这是它最大的一个优点。它可以用于以下几种场合。 
+
+（1）保存用户登录状态。（2）跟踪用户行为。（3）定制页面。（4）创建购物车，例如淘宝网就使用cookie记录了用户曾经浏览过的商品，方便随时进行比较。 
+
+cookie能完成的部分应用，还有更多的功能需要全局变量。cookie的缺点主要集中于安全性和隐私保护。主要包括以下几种： 
+
+（1）cookie可能被禁用。当用户非常注重个人隐私保护时，他很可能禁用浏览器的cookie功能； 
+（2）cookie是与浏览器相关的。这意味着即使访问的是同一个页面，不同浏览器之间所保存的cookie也是不能互相访问的； 
+（3）cookie可能被删除。因为每个cookie都是硬盘上的一个文件，因此很有可能被用户删除； 
+（4）cookie安全性不够高。所有的cookie都是以纯文本的形式记录于文件中，因此如果要保存用户名密码等信息时，最好事先经过加密处理。
+二、localStorage
+1、什么是localstorage？
+
+在HTML5中，新加入了一个localStorage特性，这个特性主要是用来作为本地存储来使用的，解决了cookie存储空间不足的问题(cookie中每条cookie的存储空间为4k)，localStorage中一般浏览器支持的是5M大小，这个在不同的浏览器中localStorage会有所不同。
+
+2、localstorage的优势与局限
+
+localStorage的优势：
+a、 localStorage拓展了cookie的4K限制
+b、 localStorage会可以将第一次请求的数据直接存储到本地，这个相当于一个5M大小的针对于前端页面的数据库，相比于cookie可以节约带宽，但是这个却是只有在高版本的浏览器中才支持的
+
+localStorage的局限：
+a、 浏览器的大小不统一，并且在IE8以上的IE版本才支持localStorage这个属性
+b、 目前所有的浏览器中都会把localStorage的值类型限定为string类型，这个在对我们日常比较常见的JSON对象类型需要一些转换
+c、 localStorage在浏览器的隐私模式下面是不可读取的
+d、 localStorage本质上是对字符串的读取，如果存储内容多的话会消耗内存空间，会导致页面变卡
+e、 localStorage不能被爬虫抓取到
+localStorage与sessionStorage的唯一一点区别就是localStorage属于永久性存储，而sessionStorage属于当会话结束的时候，sessionStorage中的键值对会被清空
+
+三、sessionStorage
+sessionStorage用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁
+
+四、ApplicationCache
+ applicationCache是html5新增的一个离线应用功能
+
+•离线浏览: 用户可以在离线状态下浏览网站内容。
+•更快的速度: 因为数据被存储在本地，所以速度会更快.
+•减轻服务器的负载: 浏览器只会下载在服务器上发生改变的资源。
+在对应用进行缓存的时候需要一个manifest文件
+
+五、强缓存与协商缓存
+1、浏览器缓存包含两种类型，即强缓存（也叫本地缓存）和协商缓存，浏览器在第一次请求发生后，再次请求时：
+浏览器在请求某一资源时，会先获取该资源缓存的header信息，判断是否命中强缓存（cache-control和expires信息），若命中直接从缓存中获取资源信息，包括缓存header信息；本次请求根本就不会与服务器进行通信；在firebug下可以查看某个具有强缓存资源返回的信息，例如本地firebug查看的一个强缓存js文件
+2、如果没有命中强缓存，浏览器会发送请求到服务器，请求会携带第一次请求返回的有关缓存的header字段信息（Last-Modified/If-Modified-Since和Etag/If-None-Match），由服务器根据请求中的相关header信息来比对结果是否协商缓存命中；若命中，则服务器返回新的响应header信息更新缓存中的对应header信息，但是并不返回资源内容，它会告知浏览器可以直接从缓存获取；否则返回最新的资源内容
